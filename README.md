@@ -1,247 +1,224 @@
 # Deep Research Web UI
 
-[English | [中文](README_zh.md)]
+[English | [日本語](README_ja.md)]
 
-This is a web UI for https://github.com/dzhng/deep-research, with several improvements and fixes.
+## Overview
 
-Features:
+Enter research topic → AI generates queries → Web search & scraping → Mind map & markdown report
 
-- 🚀 **Safe & Secure**: Everything (config, API requests, ...) stays in your browser locally
-- 🕙 **Realtime feedback**: Stream AI responses and reflect on the UI in real-time
-- 🌳 **Search visualization**: Shows the research process using a tree structure. Supports searching in different languages
-- 📄 **Export as PDF**: Export the final research report as Markdown / PDF
-- 🤖 **Supports more models**: Uses plain prompts instead of newer, less widely supported features like Structured Outputs. This ensures to work with more providers that haven't caught up with the latest OpenAI capabilities.
-- 🐳 **Docker support**: Deploy in your environment in one-line command
-- 🔧 **Server Mode**: Deploy with environment variables, no need for users to configure API keys
+This is a web UI for [dzhng/deep-research](https://github.com/dzhng/deep-research) with multilingual support (English, Japanese, French) and Docker deployment focus.
 
-Currently available providers:
+## Features
 
-- AI: OpenAI compatible, SiliconFlow, Infiniai, DeepSeek, OpenRouter, Ollama and more
-- Web Search: Tavily (1000 free credits / month), Firecrawl (cloud / self-hosted)
+- 🔍 **AI-Powered Research**: Automated research process with visual flow tracking
+- 🌐 **Multi-language**: English, Japanese, French interface
+- 🔒 **Privacy-focused**: All API requests from browser, no remote data storage
+- ⚡ **Real-time**: Streaming responses with live updates
+- 🌳 **Visual Research Flow**: Tree structure visualization of research process
+- 📄 **Export Options**: Markdown and PDF export capabilities
+- 🤖 **Multiple AI Providers**: OpenAI, SiliconFlow, DeepSeek, OpenRouter, Ollama
+- 🔍 **Web Search Providers**: Tavily, Firecrawl, Google PSE
 
-Please give a 🌟 Star if you like this project!
+## Quick Start with Docker
 
-## Sponsor
-
-<a href="https://www.swiftproxy.net/?ref=anotiawang">
-<img width="415" alt="image" src="https://github.com/user-attachments/assets/df889a5f-c4fc-4209-b49d-9c7dc8b9c3ca" />
-</a>
-
-**Unlock Reliable Proxy Services with Swiftproxy**
-
-With Swiftproxy, you can access high-performance, secure proxies to enhance your web automation, privacy, and data collection efforts. Our services are trusted by developers and businesses to scale scraping tasks and ensure a safe online experience. Get started today at Swiftproxy.net. Use the coupon `GHB5` to get 10% off!
-
----
-
-<video width="500" src="https://github.com/user-attachments/assets/8f9baa43-a74e-4613-aebb-1bcc29a686f0" controls></video>
-
-## Recent updates
-
-25/07/24
-
-- Added: Research history management - Export/import individual history records, delete all records
-
-25/07/23
-
-- Added: Server Mode - Deploy with environment variables, users don't need to configure API keys
-
-25/06/26
-
-- Added: Provider 302.AI support
-
-25/04/06
-
-- Added: Use Google PSE for web search
-
-25/03/09
-
-- Added: InifiniAI support
-- Improved LLM prompts
-- Improved error handling
-- Improved: Try to fetch model list even when no API key is provided
-
-25/02/27
-
-- Added: Citations in research report
-- Improved: Chinese output layout
-- Improved: Increased max width and breadth in the form
-- Fixed: Text overflow issues for web search node details
-- Fixed: general UI style issues
-
-25/02/24
-
-- Added: Fullscreen mode for the search flow. This helps you to focus on the search process better.
-- Changed: "Export PDF" now uses the browser's native print ability. This fixes layout issues and emilinates font problems.
-- Fixed: "Context Size" setting are not correctly applied
-
-25/02/22
-
-- Added: NL/Dutch translation
-- Added: Retry failed nodes in web search
-- Fixed: Web search node sometimes shows empty label and duplicated learnings
-- Fixed: Firecrawl now limits scrape content format to `Markdown`
-
-25/02/18 - 25/02/20
-
-- Added: "advanced search" and "search topic" support for Tavily
-- Added: custom endpoint support for Firecrawl
-- Fixed: overall bug fixes, less "invalid JSON structure" errors
-
-25/02/17
-
-- Added: set rate limits for web search
-- Added: set context length for AI model
-
-25/02/16
-
-- Refactored the search visualization using VueFlow
-- Style & bug fixes
-
-<details>
-<summary>Older updates</summary>
-
-25/02/15
-
-- Added AI providers DeepSeek, OpenRouter and Ollama; Added web search provider Firecrawl
-- Supported checking project updates
-- Supported regenerating reports
-- General fixes
-
-25/02/14
-
-- Supported reasoning models like DeepSeek R1
-- Improved compatibility with more models & error handling
-
-25/02/13
-
-- Significantly reduced bundle size
-- Supported searching in different languages
-- Added Docker support
-- Fixed "export as PDF" issues
-</details>
-
-## How to use
-
-Live demo: <a href="https://deep-research.ataw.top" target="_blank">https://deep-research.ataw.top</a>
-
-### Self hosted
-
-#### Server Mode (Recommended)
-Deploy with environment variables - users don't need to configure API keys:
-
-**Using Docker with environment variables:**
+### Option 1: Client Mode (Users configure their own API keys)
 
 ```bash
-docker run -p 3000:3000 \
+# Clone the repository
+git clone https://github.com/AnotiaWang/deep-research-web-ui
+cd deep-research-web-ui
+
+# Build and run with Docker
+docker build -t deep-research-web .
+docker run -d --name deep-research-web -p 3000:3000 deep-research-web
+```
+
+Access at: http://localhost:3000
+
+### Option 2: Server Mode (Pre-configured API keys)
+
+1. **Create environment file:**
+```bash
+# Create .env file
+cat > .env << EOF
+NUXT_PUBLIC_SERVER_MODE=true
+NUXT_AI_API_KEY=your-ai-api-key
+NUXT_WEB_SEARCH_API_KEY=your-search-api-key
+NUXT_PUBLIC_AI_PROVIDER=openai-compatible
+NUXT_PUBLIC_AI_MODEL=gpt-4o-mini
+NUXT_PUBLIC_WEB_SEARCH_PROVIDER=tavily
+EOF
+```
+
+2. **Run with environment variables:**
+```bash
+# Option A: Using .env file
+docker run -d --name deep-research-web -p 3000:3000 --env-file .env deep-research-web
+
+# Option B: Using direct environment variables
+docker run -d --name deep-research-web -p 3000:3000 \
   -e NUXT_PUBLIC_SERVER_MODE=true \
   -e NUXT_AI_API_KEY=your-ai-api-key \
   -e NUXT_WEB_SEARCH_API_KEY=your-search-api-key \
   -e NUXT_PUBLIC_AI_PROVIDER=openai-compatible \
   -e NUXT_PUBLIC_AI_MODEL=gpt-4o-mini \
   -e NUXT_PUBLIC_WEB_SEARCH_PROVIDER=tavily \
-  anotia/deep-research-web:latest
+  deep-research-web
 ```
 
-**Using Docker with .env file:**
+## Step-by-Step Docker Deployment Guide
+
+### Prerequisites
+- Docker installed on your system
+- API keys for AI provider (OpenAI, etc.) and web search provider (Tavily, etc.)
+
+### Step 1: Clone and Build
 
 ```bash
-# Create .env file with your configuration
-docker run -p 3000:3000 --env-file .env anotia/deep-research-web:latest
-```
-
-#### Client Mode (Traditional)
-Users configure their own API keys in the browser:
-
-One-click deploy with [EdgeOne Pages](https://edgeone.ai/products/pages):
-
-[![Deploy with EdgeOne Pages](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?from=github&template=https://github.com/AnotiaWang/deep-research-web-ui&from=github)
-
-Use pre-built Docker image:
-
-```bash
-docker run -p 3000:3000 --name deep-research-web -d anotia/deep-research-web:latest
-```
-
-Use self-built Docker image:
-
-```
+# 1. Clone the repository
 git clone https://github.com/AnotiaWang/deep-research-web-ui
 cd deep-research-web-ui
+
+# 2. Build Docker image
 docker build -t deep-research-web .
-docker run -p 3000:3000 --name deep-research-web -d deep-research-web
 ```
 
-### Environment Variables
+### Step 2: Choose Deployment Mode
 
-#### Server Mode Configuration
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `NUXT_PUBLIC_SERVER_MODE` | Enable server mode | `false` |
-| `NUXT_AI_API_KEY` | AI provider API key | - |
-| `NUXT_AI_API_BASE` | AI provider base URL | - |
-| `NUXT_WEB_SEARCH_API_KEY` | Web search API key | - |
-| `NUXT_WEB_SEARCH_API_BASE` | Web search base URL | - |
+**For personal use (Client Mode):**
+```bash
+# Users will configure API keys in the web interface
+docker run -d --name deep-research-web -p 3000:3000 deep-research-web
+```
 
-#### Public Configuration (Server Mode)
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `NUXT_PUBLIC_AI_PROVIDER` | AI provider type | `openai-compatible` |
-| `NUXT_PUBLIC_AI_MODEL` | AI model name | `gpt-4o-mini` |
-| `NUXT_PUBLIC_AI_CONTEXT_SIZE` | Context size | `128000` |
-| `NUXT_PUBLIC_WEB_SEARCH_PROVIDER` | Search provider | `tavily` |
-| `NUXT_PUBLIC_WEB_SEARCH_CONCURRENCY_LIMIT` | Max concurrency | `2` |
-| `NUXT_PUBLIC_WEB_SEARCH_SEARCH_LANGUAGE` | Search language | `en` |
-| `NUXT_PUBLIC_TAVILY_ADVANCED_SEARCH` | Use Tavily advanced search | `false` |
-| `NUXT_PUBLIC_TAVILY_SEARCH_TOPIC` | Tavily search topic | `general` |
-| `NUXT_PUBLIC_GOOGLE_PSE_ID` | Google PSE ID | - |
+**For team/organization use (Server Mode):**
+```bash
+# Create configuration file
+cat > .env << EOF
+# Server mode settings
+NUXT_PUBLIC_SERVER_MODE=true
 
----
+# AI Provider settings
+NUXT_AI_API_KEY=sk-your-openai-api-key
+NUXT_PUBLIC_AI_PROVIDER=openai-compatible
+NUXT_PUBLIC_AI_MODEL=gpt-4o-mini
+NUXT_PUBLIC_AI_CONTEXT_SIZE=128000
 
-## Developing
+# Web Search settings
+NUXT_WEB_SEARCH_API_KEY=your-tavily-api-key
+NUXT_PUBLIC_WEB_SEARCH_PROVIDER=tavily
+NUXT_PUBLIC_WEB_SEARCH_CONCURRENCY_LIMIT=2
+NUXT_PUBLIC_WEB_SEARCH_SEARCH_LANGUAGE=en
+EOF
 
-### Setup
+# Run with configuration
+docker run -d --name deep-research-web -p 3000:3000 --env-file .env deep-research-web
+```
 
-Make sure to install dependencies:
+### Step 3: Access and Verify
+
+1. Open browser and go to http://localhost:3000
+2. Check language selector shows: English, 日本語, Français
+3. Verify the simplified description is displayed
+4. Test the research functionality
+
+### Step 4: Container Management
 
 ```bash
+# Check container status
+docker ps
+
+# View logs
+docker logs deep-research-web
+
+# Stop container
+docker stop deep-research-web
+
+# Start container
+docker start deep-research-web
+
+# Remove container
+docker rm deep-research-web
+
+# Remove image
+docker rmi deep-research-web
+```
+
+## Environment Variables Reference
+
+### Required for Server Mode
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `NUXT_PUBLIC_SERVER_MODE` | Enable server mode | `true` |
+| `NUXT_AI_API_KEY` | AI provider API key | `sk-...` |
+| `NUXT_WEB_SEARCH_API_KEY` | Search provider API key | `tvly-...` |
+
+### Optional Configuration
+| Variable | Description | Default | Options |
+|----------|-------------|---------|---------|
+| `NUXT_PUBLIC_AI_PROVIDER` | AI provider | `openai-compatible` | `openai-compatible`, `siliconflow`, `deepseek` |
+| `NUXT_PUBLIC_AI_MODEL` | AI model | `gpt-4o-mini` | Any supported model |
+| `NUXT_PUBLIC_WEB_SEARCH_PROVIDER` | Search provider | `tavily` | `tavily`, `firecrawl`, `google-pse` |
+| `NUXT_PUBLIC_WEB_SEARCH_SEARCH_LANGUAGE` | Search language | `en` | `en`, `ja`, `fr` |
+
+## Troubleshooting
+
+### Common Issues
+
+**Container won't start:**
+```bash
+# Check Docker logs
+docker logs deep-research-web
+
+# Verify port is not in use
+netstat -an | grep 3000
+```
+
+**API errors:**
+- Verify API keys are correct
+- Check API key permissions and quotas
+- Ensure environment variables are properly set
+
+**Language issues:**
+- Clear browser cache
+- Verify the rebuilt Docker image includes language fixes
+
+### Getting Help
+
+1. Check the container logs: `docker logs deep-research-web`
+2. Verify environment variables: `docker exec deep-research-web env | grep NUXT`
+3. Test API connectivity from within container
+
+## Development
+
+For development without Docker:
+
+```bash
+# Install dependencies
 pnpm install
-```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
+# Start development server
 pnpm dev
-```
 
-## Production
-
-Build the application for production:
-
-If you want to deploy a SSR application:
-
-```bash
+# Build for production
 pnpm build
 ```
 
-If you want to deploy a static, SSG application:
+## Recent Updates
 
-```bash
-pnpm generate
-```
+25/07/24
+- Added: Research history management - Export/import individual history records, delete all records
 
-Locally preview production build:
+25/07/23
+- Added: Server Mode - Deploy with environment variables, users don't need to configure API keys
 
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+25/02/22
+- Updated: Language support changed to English, Japanese, French
+- Updated: Simplified project description for better usability
 
 ## License
 
-MIT
+MIT License
 
 ## Star History
 

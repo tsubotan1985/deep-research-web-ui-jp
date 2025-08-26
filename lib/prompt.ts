@@ -22,8 +22,8 @@ export const systemPrompt = () => {
 export const languagePrompt = (language: string) => {
   let languagePrompt = `Respond in ${language}.`
 
-  if (language === '中文') {
-    languagePrompt += ' 在中文和英文之间添加适当的空格来提升可读性'
+  if (language === '日本語') {
+    languagePrompt += ' 日本語で自然な表現になるよう配慮してください'
   }
   return languagePrompt
 }

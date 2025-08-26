@@ -1,0 +1,165 @@
+{
+  "language": "Français",
+  "modelThinking": "Réflexion...",
+  "modelThinkingComplete": "Réflexion terminée",
+  "invalidStructuredOutput": "Le modèle a retourné du contenu incomplet ou invalide qui ne peut pas être analysé. Essayez d'utiliser un modèle plus grand ou plus \"intelligent\".",
+  "index": {
+    "projectDescription": "Saisie du sujet → Génération de requêtes IA → Recherche web & scraping → Carte mentale & rapport",
+    "missingConfigTitle": "Configuration non définie",
+    "missingConfigDescription": "Ce projet nécessite que vous apportiez vos propres clés API."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "disclaimer": "Les paramètres sont stockés localement dans votre navigateur.",
+    "save": "Enregistrer",
+    "ai": {
+      "provider": "Fournisseur IA",
+      "apiKey": "Clé API",
+      "apiBase": "URL de base API",
+      "model": "Modèle",
+      "contextSize": "Longueur du contexte",
+      "contextSizeHelp": "Le nombre maximum de tokens qui seront envoyés au modèle. Ne peut pas être supérieur à la longueur de contexte du modèle.",
+      "providers": {
+        "openaiCompatible": {
+          "title": "Compatible OpenAI",
+          "description": "Tout fournisseur compatible avec l'API OpenAI. Note : Certains fournisseurs ont leurs propres options pour de meilleures performances."
+        },
+        "siliconflow": {
+          "title": "SiliconFlow",
+          "description": "Offre ¥14 de crédit gratuit à l'inscription. Obtenez une clé API sur {0}."
+        },
+        "infiniai": {
+          "title": "InfiniAI",
+          "description": "Après inscription, vous pouvez utiliser DeepSeek R1 et d'autres modèles accélérés sans barrières. Générez une clé API après connexion sur {0}."
+        },
+        "302-ai": {
+          "title": "302.AI",
+          "description": "Offre 1$ de crédit gratuit à l'inscription. Obtenez une clé API sur {0}."
+        }
+      }
+    },
+    "webSearch": {
+      "provider": "Fournisseur de recherche Web",
+      "apiKey": "Clé API",
+      "queryLanguage": "Langue de requête",
+      "queryLanguageHelp": "La langue de la requête de recherche. Utile si vous souhaitez obtenir des résultats de recherche dans une langue différente.\nLors de la rédaction des conclusions, le modèle IA utilisera toujours la même langue que l'interface Web.",
+      "providers": {
+        "tavily": {
+          "help": "Similaire à Firecrawl, mais offre 1000 crédits gratuits / mois. Obtenez une clé API sur {0}.",
+          "advancedSearch": "Recherche avancée",
+          "advancedSearchHelp": "Obtenez des résultats de recherche de meilleure qualité. Coûte 1 crédit supplémentaire à chaque fois.",
+          "searchTopic": "Sujet de recherche",
+          "searchTopicHelp": "Optimise la recherche pour le sujet sélectionné avec des informations personnalisées et organisées. Par défaut 'général'."
+        },
+        "firecrawl": {
+          "help": "Obtenez une clé API sur {0} si vous utilisez le service officiel."
+        },
+        "google-pse": {
+          "title": "Google PSE",
+          "help": "Utilise Google Programmable Search Engine. Nécessite une clé API et un ID PSE de Google Cloud Console / PSE Console. Trouvez les détails sur {0}.",
+          "apiKeyLabel": "Clé API Google",
+          "apiKeyPlaceholder": "Entrez votre clé API Google",
+          "pseIdLabel": "ID du moteur de recherche programmable (cx)",
+          "pseIdPlaceholder": "Entrez votre ID PSE (valeur cx)"
+        }
+      },
+      "concurrencyLimitHelp": "Limite les tâches de recherche simultanées. Cela est utile pour éviter de surcharger le fournisseur de recherche et de provoquer l'échec des requêtes.",
+      "concurrencyLimit": "Limite de concurrence",
+      "apiBase": "URL de base API"
+    }
+  },
+  "researchTopic": {
+    "title": "1. Sujet de recherche",
+    "inputTitle": "Sujet de recherche",
+    "placeholder": "Tout ce que vous souhaitez rechercher...",
+    "numOfQuestions": "Nombre de questions",
+    "numOfQuestionsHelp": "Le nombre de questions de suivi pour clarifier.",
+    "depth": "Profondeur",
+    "depthHelp": "Nombre d'itérations.",
+    "breadth": "Largeur",
+    "breadthHelp": "Nombre de recherches dans la première itération. La largeur de recherche de chaque itération est la moitié de la précédente.",
+    "start": "Commencer la recherche",
+    "researching": "Recherche en cours..."
+  },
+  "modelFeedback": {
+    "title": "2. Retour du modèle",
+    "description": "L'IA vous posera quelques questions de suivi pour vous aider à clarifier la direction de la recherche.",
+    "waiting": "En attente du retour du modèle...",
+    "submit": "Soumettre la réponse",
+    "error": "Erreur lors de l'obtention du retour : {0}",
+    "noQuestions": "Le modèle n'a retourné aucune question de suivi."
+  },
+  "webBrowsing": {
+    "title": "3. Navigation Web",
+    "description": "L'IA recherchera ensuite sur le web en se basant sur notre objectif de recherche, et itérera jusqu'à atteindre la profondeur.",
+    "clickToView": "Cliquez sur un nœud enfant pour voir les détails.",
+    "nodeDetails": "Détails du nœud",
+    "startNode": {
+      "description": "C'est le début de votre voyage de recherche approfondie !"
+    },
+    "researchGoal": "Objectif de recherche",
+    "visitedUrls": "URLs visitées",
+    "learnings": "Apprentissages",
+    "generating": "Génération...",
+    "nodeFailed": "Recherche échouée",
+    "nodeFailedToast": "Le nœud de recherche \"{label}\" a échoué",
+    "followUpQuestions": "Questions de suivi",
+    "retry": "Réessayer",
+    "noSearchResult": "Aucun résultat de recherche trouvé"
+  },
+  "researchReport": {
+    "title": "4. Rapport de recherche",
+    "exportPdf": "Imprimer (PDF)",
+    "exportMarkdown": "Exporter Markdown",
+    "sources": "Sources",
+    "waiting": "En attente du rapport...",
+    "generating": "Génération du rapport...",
+    "regenerate": "Régénérer",
+    "generateFailed": "Génération du rapport échouée : {0}",
+    "exportFailed": "Exportation échouée",
+    "incompatibleBrowser": "Navigateur incompatible",
+    "incompatibleBrowserDescription": "Votre navigateur ne supporte pas cette méthode d'impression. Veuillez considérer l'utilisation d'un navigateur moderne, ou exportez le Markdown et convertissez-le manuellement en PDF en utilisant d'autres services comme https://md-to-pdf.fly.dev (Utilisez à vos propres risques)"
+  },
+  "error": {
+    "requestBlockedByCORS": "Le fournisseur d'API actuel pourrait ne pas autoriser les requêtes cross-origin. Veuillez essayer un autre fournisseur de services ou contacter le fournisseur pour le support."
+  },
+  "autoUpdate": {
+    "newVersionTitle": "Nouvelle version disponible : {0}",
+    "newVersionDescription": "Note : Si vous utilisez une version auto-hébergée, veuillez redéployer pour obtenir les nouvelles fonctionnalités et corrections de bugs.",
+    "refresh": "Actualiser la page",
+    "dismiss": "Ignorer"
+  },
+  "exitFullscreen": "Quitter le plein écran",
+  "fullscreen": "Plein écran",
+  "serverMode": {
+    "title": "Mode serveur",
+    "description": "Fonctionne actuellement en mode serveur. Toutes les configurations sont fournies par le serveur, pas besoin de définir les clés API manuellement.",
+    "loading": "Chargement de la configuration...",
+    "loadFailed": "Échec du chargement de la configuration",
+    "aiProvider": "Fournisseur IA",
+    "aiModel": "Modèle IA",
+    "webSearchProvider": "Fournisseur de recherche Web",
+    "searchLanguage": "Langue de recherche",
+    "configNotice": "La configuration actuelle est définie par l'administrateur du serveur. Contactez l'administrateur pour effectuer des changements."
+  },
+  "history": {
+    "title": "Historique",
+    "export": "Exporter",
+    "import": "Importer",
+    "empty": "Aucun enregistrement d'historique",
+    "load": "Charger",
+    "delete": "Supprimer",
+    "confirmDelete": "Confirmer la suppression de cet enregistrement d'historique ?",
+    "deleteAll": "Tout supprimer",
+    "confirmDeleteAll": "Confirmer la suppression de tous les enregistrements d'historique ?",
+    "importSuccess": "Importation réussie",
+    "importFailed": "Importation échouée",
+    "depth": "Profondeur",
+    "breadth": "Largeur",
+    "questions": "Questions"
+  },
+  "common": {
+    "delete": "Supprimer",
+    "cancel": "Annuler"
+  }
+}

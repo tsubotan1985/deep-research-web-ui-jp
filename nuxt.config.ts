@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
   ],
 
+  // プライバシー保護: Nuxtテレメトリーを無効化
+  telemetry: false,
+
   runtimeConfig: {
     public: {
       version: projVersion,
@@ -42,7 +45,7 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: './i18n.config.ts',
     strategy: 'no_prefix',
-    locales: ['en', 'zh', 'nl'],
+    locales: ['en', 'ja', 'fr'],
     detectBrowserLanguage: {
       alwaysRedirect: true,
       useCookie: true,

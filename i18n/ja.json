@@ -1,0 +1,165 @@
+{
+  "language": "日本語",
+  "modelThinking": "思考中...",
+  "modelThinkingComplete": "思考完了",
+  "invalidStructuredOutput": "モデルが返したコンテンツが無効または不完全で、解析できません。より大きいか「賢い」モデルを使用してみてください。",
+  "index": {
+    "projectDescription": "リサーチトピック入力 → AIがクエリ生成 → Web検索・スクレイピング → マインドマップ・レポート作成",
+    "missingConfigTitle": "API設定が必要です",
+    "missingConfigDescription": "このプロジェクトでは、独自のAPIキーを持参する必要があります (Bring Your Own Key)"
+  },
+  "settings": {
+    "title": "設定",
+    "disclaimer": "設定はブラウザにローカル保存されます",
+    "save": "保存",
+    "ai": {
+      "provider": "AI プロバイダー",
+      "apiKey": "API キー",
+      "apiBase": "API ベース URL",
+      "model": "モデル名",
+      "contextSize": "コンテキスト長",
+      "contextSizeHelp": "モデルに送信される最大トークン数。モデル自体がサポートするコンテキスト長を超えることはできません。",
+      "providers": {
+        "openaiCompatible": {
+          "title": "OpenAI 互換",
+          "description": "OpenAI APIフォーマットと互換性のある任意のプロバイダー。\n注意：互換性向上のため、一部のプロバイダーには個別のオプションがあります。"
+        },
+        "siliconflow": {
+          "title": "SiliconFlow",
+          "description": "登録時に¥14の無料クレジットを提供。{0} でAPIキーを生成してください。"
+        },
+        "infiniai": {
+          "title": "InfiniAI",
+          "description": "登録後、DeepSeek R1などの推論加速モデルを障壁なく無料で使用できます。{0} にログイン後、APIキーを生成してください。"
+        },
+        "302-ai": {
+          "title": "302.AI",
+          "description": "登録時に$1の無料クレジットを提供。{0} でAPIキーを生成してください。"
+        }
+      }
+    },
+    "webSearch": {
+      "provider": "ウェブ検索プロバイダー",
+      "apiKey": "API キー",
+      "queryLanguage": "クエリ言語",
+      "queryLanguageHelp": "検索クエリの言語。異なる言語で検索結果を取得したい場合に便利です。\n結論を書く際、AIモデルはWeb UIと同じ言語を使用します。",
+      "providers": {
+        "tavily": {
+          "help": "Firecrawlと似ていますが、月1000回の無料クレジットを提供。{0} でAPIキーを取得してください。",
+          "advancedSearch": "高度検索",
+          "advancedSearchHelp": "より高品質な検索結果を取得。毎回1つの追加クレジットを消費します。",
+          "searchTopic": "検索トピック",
+          "searchTopicHelp": "選択されたトピックに対して検索を最適化し、カスタマイズされた精選情報を提供します。デフォルトは「general」。"
+        },
+        "firecrawl": {
+          "help": "公式サービスを使用している場合は、{0} でAPIキーを取得してください。"
+        },
+        "google-pse": {
+          "title": "Google PSE",
+          "help": "Google プログラマブル検索エンジンを使用。Google Cloud Console / PSE Console からAPIキーとPSE IDが必要です。詳細は {0} をご覧ください。",
+          "apiKeyLabel": "Google API キー",
+          "apiKeyPlaceholder": "Google API キーを入力",
+          "pseIdLabel": "プログラマブル検索エンジン ID (cx)",
+          "pseIdPlaceholder": "PSE ID (cx値) を入力"
+        }
+      },
+      "concurrencyLimitHelp": "同時検索タスクを制限します。検索プロバイダーの過負荷を避け、リクエストの失敗を防ぐのに役立ちます。",
+      "concurrencyLimit": "同時実行制限",
+      "apiBase": "API ベース URL"
+    }
+  },
+  "researchTopic": {
+    "title": "1. 研究トピック",
+    "inputTitle": "研究トピック",
+    "placeholder": "研究したいものは何でも...",
+    "numOfQuestions": "質問数",
+    "numOfQuestionsHelp": "明確化のためのフォローアップ質問数。",
+    "depth": "深さ",
+    "depthHelp": "反復回数。",
+    "breadth": "幅",
+    "breadthHelp": "最初の反復での検索回数。各反復の検索幅は前回の半分になります。",
+    "start": "研究開始",
+    "researching": "研究中..."
+  },
+  "modelFeedback": {
+    "title": "2. モデルフィードバック",
+    "description": "AIが研究方向を明確にするためのフォローアップ質問をいくつか行います。",
+    "waiting": "モデルフィードバックを待機中...",
+    "submit": "回答を送信",
+    "error": "フィードバック取得エラー: {0}",
+    "noQuestions": "モデルはフォローアップ質問を返しませんでした。"
+  },
+  "webBrowsing": {
+    "title": "3. ウェブ検索",
+    "description": "AIが研究目標に基づいてウェブを検索し、深さに到達するまで反復します。",
+    "clickToView": "詳細を表示するには子ノードをクリックしてください。",
+    "nodeDetails": "ノード詳細",
+    "startNode": {
+      "description": "これがあなたの深層研究の旅の始まりです！"
+    },
+    "researchGoal": "研究目標",
+    "visitedUrls": "訪問したURL",
+    "learnings": "学習内容",
+    "generating": "生成中...",
+    "nodeFailed": "検索失敗",
+    "nodeFailedToast": "検索ノード \"{label}\" が失敗しました",
+    "followUpQuestions": "フォローアップ質問",
+    "retry": "再試行",
+    "noSearchResult": "検索結果が見つかりません"
+  },
+  "researchReport": {
+    "title": "4. 研究レポート",
+    "exportPdf": "印刷 (PDF)",
+    "exportMarkdown": "Markdown エクスポート",
+    "sources": "ソース",
+    "waiting": "レポートを待機中...",
+    "generating": "レポート生成中...",
+    "regenerate": "再生成",
+    "incompatibleBrowser": "非対応ブラウザ",
+    "incompatibleBrowserDescription": "お使いのブラウザはこの印刷方法をサポートしていません。モダンブラウザの使用を検討するか、Markdownをエクスポートして他のサービス（https://md-to-pdf.fly.dev など）を使用して手動でPDFに変換してください（自己責任で使用）",
+    "exportFailed": "エクスポート失敗",
+    "generateFailed": "レポート生成失敗: {0}"
+  },
+  "error": {
+    "requestBlockedByCORS": "現在のAPIプロバイダーはクロスオリジンリクエストを許可していない可能性があります。別のサービスプロバイダーをお試しいただくか、サポートについてプロバイダーにお問い合わせください。"
+  },
+  "autoUpdate": {
+    "newVersionTitle": "新しいバージョンが利用可能です: {0}",
+    "newVersionDescription": "注意：セルフホスト版をご利用の場合は、新機能とバグ修正を取得するために再デプロイしてください。",
+    "refresh": "ページを更新",
+    "dismiss": "却下"
+  },
+  "fullscreen": "フルスクリーン",
+  "exitFullscreen": "フルスクリーン終了",
+  "serverMode": {
+    "title": "サーバーモード",
+    "description": "現在サーバーモードで実行中です。すべての設定はサーバーによって提供され、APIキーを手動で設定する必要はありません。",
+    "loading": "設定を読み込み中...",
+    "loadFailed": "設定の読み込みに失敗しました",
+    "aiProvider": "AI プロバイダー",
+    "aiModel": "AI モデル",
+    "webSearchProvider": "ウェブ検索プロバイダー",
+    "searchLanguage": "検索言語",
+    "configNotice": "現在の設定はサーバー管理者によって設定されています。変更についてはサーバー管理者にお問い合わせください。"
+  },
+  "history": {
+    "title": "履歴",
+    "export": "エクスポート",
+    "import": "インポート",
+    "empty": "履歴レコードなし",
+    "load": "読み込み",
+    "delete": "削除",
+    "deleteAll": "すべて削除",
+    "confirmDelete": "この履歴レコードの削除を確認しますか？",
+    "confirmDeleteAll": "すべての履歴レコードの削除を確認しますか？",
+    "importSuccess": "インポート成功",
+    "importFailed": "インポート失敗",
+    "depth": "深さ",
+    "breadth": "幅",
+    "questions": "質問"
+  },
+  "common": {
+    "delete": "削除",
+    "cancel": "キャンセル"
+  }
+}

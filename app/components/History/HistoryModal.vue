@@ -88,7 +88,7 @@
   }
 
   const loadHistoryItem = (item: ResearchHistoryItem) => {
-    // 这里需要与主页面通信，加载历史记录
+    // ここでメインページと通信し、履歴を読み込む
     emit('load', item as ResearchHistoryItem)
     showModal.value = false
   }

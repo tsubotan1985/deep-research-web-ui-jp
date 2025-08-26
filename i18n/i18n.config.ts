@@ -1,14 +1,14 @@
 import en from '~~/i18n/en.json'
-import zh from '~~/i18n/zh.json'
-import nl from '~~/i18n/nl.json'
+import ja from '~~/i18n/ja.json'
+import fr from '~~/i18n/fr.json'
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  fallbackLocale: 'zh',
-  availableLocales: ['en', 'zh', 'nl'],
+  fallbackLocale: 'en',
+  availableLocales: ['en', 'ja', 'fr'],
   messages: {
     en,
-    zh,
-    nl,
+    ja,
+    fr,
   },
 }))

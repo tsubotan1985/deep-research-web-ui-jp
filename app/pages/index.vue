@@ -5,7 +5,7 @@
         <div class="flex flex-col sm:flex-row gap-2">
           <div class="flex flex-col sm:flex-row items-center mx-auto sm:ml-0 sm:mr-auto">
             <h1 class="text-3xl font-bold text-center mb-2 sm:mb-0 flex items-center">
-              Deep Research
+              CLADS Deep Research
               <div class="inline-flex flex-col items-start ml-2">
                 <span v-if="isServerMode" class="text-xs text-green-600 dark:text-green-400">
                   {{ $t('serverMode.title') }}
@@ -24,9 +24,9 @@
         </div>
 
         <i18n-t class="whitespace-pre-wrap" keypath="index.projectDescription" tag="p">
-          <UButton class="!p-0" variant="link" href="https://github.com/dzhng/deep-research" target="_blank">
-            dzhng/deep-research
-          </UButton>
+          <span class="font-medium text-gray-900 dark:text-gray-100">
+            Deep Research
+          </span>
         </i18n-t>
 
         <ResearchForm :is-loading-feedback="!!feedbackRef?.isLoading" ref="formRef" @submit="generateFeedback" />
@@ -39,7 +39,6 @@
         <ResearchReport ref="reportRef" @complete="handleReportComplete" />
       </div>
     </UContainer>
-    <AutoUpdateToast />
   </div>
 </template>
 
@@ -94,7 +93,7 @@
   }
 
   async function handleResearchComplete() {
-    // 研究完成后立即保存历史记录（包含完整数据）
+    // 研究完了後に履歴を保存（完全なデータを含む）
     const { addHistoryItem } = useHistory()
     if (researchResult.value.learnings.length > 0) {
       addHistoryItem({
@@ -105,7 +104,7 @@
         numQuestions: form.value.numQuestions,
         feedback: [...feedback.value],
         learnings: [...researchResult.value.learnings],
-        report: '', // 初始为空，将在报告生成后通过 complete 事件更新
+        report: '', // 初期値は空、レポート生成後に complete イベントで更新
       })
     }
 
@@ -114,7 +113,7 @@
   }
 
   function handleReportComplete(report: string) {
-    // 报告生成完成后更新历史记录
+    // レポート生成完了後に履歴を更新
     const { updateHistoryItem, findHistoryItemByQuery } = useHistory()
     const existingItem = findHistoryItemByQuery(form.value.query)
     if (existingItem) {
@@ -127,7 +126,7 @@
   }
 
   function loadHistoryItem(item: ResearchHistoryItem) {
-    // 加载历史记录
+    // 履歴を読み込み
     form.value = {
       query: item.query,
       breadth: item.breadth,
@@ -140,7 +139,7 @@
       learnings: [...item.learnings],
     }
 
-    // 如果历史记录中有报告，直接显示，不重新生成
+    // 履歴にレポートがある場合は直接表示、再生成しない
     if (item.report && reportRef.value) {
       nextTick(() => {
         reportRef.value?.displayReport(item.report)
