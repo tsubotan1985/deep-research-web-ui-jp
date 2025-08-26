@@ -25,8 +25,8 @@ This is a web UI for [dzhng/deep-research](https://github.com/dzhng/deep-researc
 
 ```bash
 # Clone the repository
-git clone https://github.com/AnotiaWang/deep-research-web-ui
-cd deep-research-web-ui
+git clone https://github.com/tsubotan1985/deep-research-web-ui-jp
+cd deep-research-web-ui-jp
 
 # Build and run with Docker
 docker build -t deep-research-web .
@@ -76,8 +76,8 @@ docker run -d --name deep-research-web -p 3000:3000 \
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/AnotiaWang/deep-research-web-ui
-cd deep-research-web-ui
+git clone https://github.com/tsubotan1985/deep-research-web-ui-jp
+cd deep-research-web-ui-jp
 
 # 2. Build Docker image
 docker build -t deep-research-web .
@@ -220,6 +220,3 @@ pnpm build
 
 MIT License
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=AnotiaWang/deep-research-web-ui&type=Date)](https://star-history.com/#AnotiaWang/deep-research-web-ui&Date)

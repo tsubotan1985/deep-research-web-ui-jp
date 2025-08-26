@@ -25,8 +25,8 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/AnotiaWang/deep-research-web-ui
-cd deep-research-web-ui
+git clone https://github.com/tsubotan1985/deep-research-web-ui-jp
+cd deep-research-web-ui-jp
 
 # Dockerでビルドして実行
 docker build -t deep-research-web .
@@ -76,8 +76,8 @@ docker run -d --name deep-research-web -p 3000:3000 \
 
 ```bash
 # 1. リポジトリをクローン
-git clone https://github.com/AnotiaWang/deep-research-web-ui
-cd deep-research-web-ui
+git clone https://github.com/tsubotan1985/deep-research-web-ui-jp
+cd deep-research-web-ui-jp
 
 # 2. Dockerイメージをビルド
 docker build -t deep-research-web .
@@ -219,7 +219,3 @@ pnpm build
 ## ライセンス
 
 MIT License
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=AnotiaWang/deep-research-web-ui&type=Date)](https://star-history.com/#AnotiaWang/deep-research-web-ui&Date)
